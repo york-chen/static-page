@@ -1,0 +1,25 @@
+{
+  "name": "static-page",
+  "version": "1.0.0",
+  "description": "私活需要的静态页面 york",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"pm2 start index.js -n staticPage",
+    "stop":"pm2 stop staticPage",
+    "dev":"node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/york-chen/static-page.git"
+  },
+  "author": "york",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/york-chen/static-page/issues"
+  },
+  "homepage": "https://github.com/york-chen/static-page#readme",
+  "dependencies": {
+    "koa": "^2.6.2"
+  }
+}
