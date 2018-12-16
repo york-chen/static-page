@@ -6,8 +6,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <head>
     <title><%= data.title %></title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <!--<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">-->
+    <meta name="viewport" content="width=1080, user-scalable=no, target-densitydpi=device-dpi">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!--忽略页面中自动识别电话号码与邮箱, -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 防止缓存 -->
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache" content="no-cache">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 25px 40px;
+        }
+        header .title{
+            font-size: 63px;
+            color: #333333;
+            line-height: 88px;
+            font-weight: bold;
+        }
+        .sub-txt{
+            color: #808C96;
+            font-size: 38px;
+            margin-top: 45px;
+        }
+        .content{
+            margin-top: 50px;
+            font-size: 54px;
+            color: #333333;
+            line-height: 86px;
+        }
+        .content img{
+            margin :48px 0;
+            width: 100%;
+        }
+        footer{
+            margin-top: 110px;
+        }
+        footer .share{
+            display: flex;
+            justify-content: space-between;
+        }
+        footer .share .btn{
+            display: block;
+            flex-basis: 210px;
+            height: 95px;
+        }
+        footer .share .wb{
+            background: url(/images/3.icon01.png) no-repeat 0 0;
+            background-size: contain;
+        }
+        footer .share .wx{
+            background: url(/images/3.icon02.png) no-repeat 0 0;
+            background-size: contain;
+        }
+        footer .share .pyq{
+            background: url(/images/3.icon03.png) no-repeat 0 0;
+            background-size: contain;
+        }
+        footer .share .qq{
+            background: url(/images/3.icon04.png) no-repeat 0 0;
+            background-size: contain;
+        }
+        footer .prev{
+            margin-top: 90px;
+            font-size: 42px;
+            color: #333333;
+        }
+        footer .prev .article{
+            color: #002A00;
+        }
+    </style>
 </head>
 <body>
-<h1>哈哈</h1>
+    <header>
+        <div class="title">肖邦、青年公社业主喜领《不动产权证书》</div>
+        <div class="sub-txt">2018-03-18 15:20</div>
+    </header>
+    <section class="content">
+        <div>
+            2018年12月1日，城中央肖邦组团25-26栋、青年公社组团32-34栋共1500余户业主在城中央.南城营销中心喜领《不动产权证书》。
+        </div>
+        <img src="/images/3.img01.png" alt="">
+        <div>
+            一大早，业主们就按照预先的通知要求，带着相关资料，早早来到现场办理《不动产权证书》领取手续；从进入大厅，到财务核算、财务结算、领取证书，每一个环节都有工作人员耐心引导。一份份红彤彤的《不动产权证书》郑重地交付到了业主手中，看着业主们喜笑颜开，和这冬日里的暖阳一样和煦，这是成中集团对客户信任的最好的回馈与报答。
+        </div>
+        <img src="/images/3.img02.png" alt="">
+        <div>
+            成中集团作为宜宾本土实力品牌企业，一直秉承“成中，忠诚到永远”的企业精神，26年来始终坚守“按期保质交房”、“按时发放房屋权属证书”的承诺，从未失信，深得广大业主的信赖。
+        </div>
+        <div class="sub-txt">（作者：刘芳  责任编辑：陈江波）</div>
+    </section>
+    <footer>
+        <div class="share">
+            <a class="btn wb" href="javascript:void(0)"></a>
+            <a class="btn wx" href="javascript:void(0)"></a>
+            <a class="btn pyq" href="javascript:void(0)"></a>
+            <a class="btn qq" href="javascript:void(0)"></a>
+        </div>
+        <div class="prev">
+            <span>上一篇: <span class="article">中医养生——走进社卫中心康复医学科</span></span>
+        </div>
+    </footer>
 </body>
+<!--<script>-->
+    <!--(function (doc,win) {-->
+        <!--var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function(){-->
+            <!--var clientWidth = docEl.clientWidth;-->
+            <!--docEl.style.fontSize = 40 * (clientWidth / 375) + 'px';-->
+        <!--};-->
+        <!--if(!doc.addEventListener){-->
+            <!--return;-->
+        <!--}-->
+        <!--win.addEventListener(resizeEvt, recalc, false);-->
+        <!--doc.addEventListener('DOMContentLoaded', recalc, false);-->
+        <!--recalc()-->
+    <!--})(document,window)-->
+<!--</script>-->
 </html>

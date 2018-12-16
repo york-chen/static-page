@@ -9,7 +9,8 @@ var formatDate=require('./routes/helper/formatDate'),
     formatImgUrl=require('./routes/helper/formatImgUrl')
     formatText=require('./routes/helper/formatText'),
     formatVideoScreen = require('./routes/helper/formatVideoScreen');
-var routes = require('./routes/index');
+var routes = require('./routes/index'),
+    map = require('./routes/map');
 
 var app = express();
 
@@ -49,6 +50,7 @@ if (app.get('env') === 'production') {
 }
 
 app.use('/', routes);
+app.use('/map', map);
 //格式化日期，使用了moment函数
 app.locals.dateFormat=formatDate;
 //格式化图片的地址

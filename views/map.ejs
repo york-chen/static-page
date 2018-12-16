@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="keywords" content="模切,模切易得通,人才,材料,设备,加工,资讯">
+<meta name="description" content="模切易得通官方网站；模切行业采购，工艺，一站式服务平台">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<head>
+    <title><%= data.title %></title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!--忽略页面中自动识别电话号码与邮箱, -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 防止缓存 -->
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache" content="no-cache">
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-size: .33rem;
+            background-color: #f6f6f6;
+        }
+        .map{
+            margin-top: .03rem;
+            height: 5.8rem;
+        }
+        .addr{
+            line-height: .5rem;
+            color: #333333;
+        }
+        .addr,.imgs{
+            padding: .15rem .35rem;
+            background-color: #ffffff;
+        }
+        .imgs{
+            margin-top: .26rem;
+            margin-bottom: .1rem;
+        }
+        .imgs .title{
+            color: #000;
+            font-size: .44rem;
+        }
+        .imgs img{
+            width: 100%;
+        }
+
+        .content-window-card {
+            position: relative;
+            box-shadow: none;
+            bottom: 0;
+            left: 0;
+            width: 6.3rem;
+            height: 2.3rem;
+            padding: .2rem;
+        }
+        .custom-info {
+            background-color: #fff;
+            box-shadow: 1px 1px 10px 0;
+            border-radius: 5px;
+        }
+        .custom-info .info-middle{
+            display: flex;
+        }
+        .custom-info .img-wrap{
+            flex: 1;
+        }
+        .custom-info .img-wrap img{
+            width: 100%;
+        }
+        .custom-info .content-txt{
+            flex: 3;
+            font-size: .33rem;
+            color: #333;
+            line-height: .46rem;
+            padding: .1rem .2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="container" class="map">
+
+    </section>
+    <section class="addr">
+        <div>成中集团总部办公大楼—成中大厦</div>
+        <div>总部地址：四川省宜宾市金沙新区城北新区成中大厦</div>
+    </section>
+    <section class="imgs">
+        <div class="title">实景照片</div>
+        <img src="/images/14_img02.png" alt="">
+    </section>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=22701a4fc94d4ac9287424a877d74a90"></script>
+    <script type="text/javascript">
+        var map = new AMap.Map("container", {
+            resizeEnable: true,
+            center: [104.549102,28.716556],
+            zoom: 16
+        });
+        addMarker();
+
+        //添加marker标记
+        function addMarker() {
+            map.clearMap();
+            var marker = new AMap.Marker({
+                map: map,
+                position: [104.549102,28.715556]
+            });
+            //鼠标点击marker弹出自定义的信息窗体
+            AMap.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker.getPosition());
+            });
+        }
+
+        //实例化信息窗体
+        var title = '详细地址',
+            content = '<div class="img-wrap"><img src="/images/14_img02.png"></div><div class="content-txt"><div>柏溪镇铁北新区南山星城一期4幢1层5号</div><br/><div>电话：4008866556</div></div>';
+        var infoWindow = new AMap.InfoWindow({
+            isCustom: true,  //使用自定义窗体
+            content: createInfoWindow(title, content),
+
+        });
+
+        //构建自定义信息窗体
+        function createInfoWindow(title, content) {
+            var info = document.createElement("div");
+            info.className = "custom-info input-card content-window-card";
+
+            //可以通过下面的方式修改自定义窗体的宽高
+            //info.style.width = "400px";
+            // 定义顶部标题
+//            var top = document.createElement("div");
+//            var titleD = document.createElement("div");
+//            var closeX = document.createElement("img");
+//            top.className = "info-top";
+//            titleD.innerHTML = title;
+//            closeX.src = "https://webapi.amap.com/images/close2.gif";
+//            closeX.onclick = closeInfoWindow;
+//
+//            top.appendChild(titleD);
+//            top.appendChild(closeX);
+//            info.appendChild(top);
+
+            // 定义中部内容
+            var middle = document.createElement("div");
+            middle.className = "info-middle";
+            middle.innerHTML = content;
+            info.appendChild(middle);
+
+            // 定义底部内容
+            var bottom = document.createElement("div");
+            bottom.className = "info-bottom";
+            bottom.style.position = 'relative';
+            bottom.style.top = '0px';
+            bottom.style.margin = '0 auto';
+            info.appendChild(bottom);
+            return info;
+        }
+
+        //关闭信息窗体
+        function closeInfoWindow() {
+            map.clearInfoWindow();
+        }
+    </script>
+</body>
+<script type="text/javascript">
+(function (doc,win) {
+var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function(){
+var clientWidth = docEl.clientWidth;
+docEl.style.fontSize = 40 * (clientWidth / 375) + 'px';
+};
+if(!doc.addEventListener){
+return;
+}
+win.addEventListener(resizeEvt, recalc, false);
+doc.addEventListener('DOMContentLoaded', recalc, false);
+recalc()
+})(document,window)
+</script>
+</html>

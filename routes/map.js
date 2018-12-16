@@ -5,8 +5,8 @@ var express = require('express'),
     apiUrl = require('../service/remoteURL');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    tool.responsePage('index', {
-        title: '新闻详情',
+    tool.responsePage('map', {
+        title: '成中-忠诚到永远'
     }, req, res);
 });
 
