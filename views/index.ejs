@@ -74,6 +74,9 @@
             font-size: 54px;
             color: #333333;
             line-height: 86px;
+            word-break: break-all;
+            word-wrap: break-word;
+            word-spacing: normal;
         }
         .content img{
             margin :48px 0;
@@ -115,6 +118,9 @@
         footer .prev .article{
             color: #002A00;
         }
+        /*.prev a{*/
+            /*text-decoration: none;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -138,28 +144,27 @@
     </section>
     <footer>
         <div class="share">
-            <a class="btn wb" href="javascript:void(0)"></a>
-            <a class="btn wx" href="javascript:void(0)"></a>
-            <a class="btn pyq" href="javascript:void(0)"></a>
-            <a class="btn qq" href="javascript:void(0)"></a>
+            <a onclick="shareToOtherPlatform('SinaWeibo')" class="btn wb" href="javascript:void(0)"></a>
+            <a onclick="shareToOtherPlatform('Wechat')" class="btn wx" href="javascript:void(0)"></a>
+            <a onclick="shareToOtherPlatform('WechatMoments')" class="btn pyq" href="javascript:void(0)"></a>
+            <a onclick="shareToOtherPlatform('QQ')" class="btn qq" href="javascript:void(0)"></a>
         </div>
         <div class="prev">
-            <span>上一篇: <span class="article">中医养生——走进社卫中心康复医学科</span></span>
+            <span>上一篇: <a class="article">中医养生——走进社卫中心康复医学科</a></span>
         </div>
     </footer>
+    <script type="text/javascript">
+        function shareToOtherPlatform(platformName) {
+            if(window.JSBridgeNEWS){
+                JSBridgeNEWS.shareNative({
+                    image:'',//微信分享需要使用的小图标，貌似他们还没有定用哪一个，所以留着
+                    title:'',//这里使用页面的title
+                    url:window.location.href,
+                    desc:'',//页面的描述信息
+                    platformName:platformName//将要分享到的平台
+                })
+            }
+        }
+    </script>
 </body>
-<!--<script>-->
-    <!--(function (doc,win) {-->
-        <!--var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function(){-->
-            <!--var clientWidth = docEl.clientWidth;-->
-            <!--docEl.style.fontSize = 40 * (clientWidth / 375) + 'px';-->
-        <!--};-->
-        <!--if(!doc.addEventListener){-->
-            <!--return;-->
-        <!--}-->
-        <!--win.addEventListener(resizeEvt, recalc, false);-->
-        <!--doc.addEventListener('DOMContentLoaded', recalc, false);-->
-        <!--recalc()-->
-    <!--})(document,window)-->
-<!--</script>-->
 </html>
