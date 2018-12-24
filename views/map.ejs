@@ -47,6 +47,20 @@
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
     <meta http-equiv="Cache" content="no-cache">
+    <script type="text/javascript">
+        (function (doc,win) {
+            var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function(){
+                var clientWidth = docEl.clientWidth;
+                docEl.style.fontSize = 40 * (clientWidth / 375) + 'px';
+            };
+            if(!doc.addEventListener){
+                return;
+            }
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc()
+        })(document,window)
+    </script>
     <style>
         html,body{
             padding: 0;
@@ -91,7 +105,7 @@
         }
         .custom-info {
             background-color: #fff;
-            box-shadow: 1px 1px 10px 0;
+            box-shadow: 1px 1px 10px 0 #ccc;
             border-radius: 5px;
         }
         .custom-info .info-middle{
@@ -109,6 +123,12 @@
             color: #333;
             line-height: .46rem;
             padding: .1rem .2rem;
+        }
+        .amap-logo{
+            display: none !important;
+        }
+        .amap-copyright {
+            opacity:0;
         }
 
     </style>
@@ -137,79 +157,55 @@
         //添加marker标记
         function addMarker() {
             map.clearMap();
+            // 创建一个 Icon
+            var startIcon = new AMap.Icon({
+                // 图标尺寸
+                size: new AMap.Size(32, 32),
+                // 图标的取图地址
+                image: '/images/14_icon.png',
+                // 图标所用图片大小
+                imageSize: new AMap.Size(32, 32),
+                // 图标取图偏移量
+                    imageOffset: new AMap.Pixel(-4, -2)
+            });
             var marker = new AMap.Marker({
                 map: map,
-                position: [104.549102,28.715556]
+                position: [104.549102,28.715556],
+                icon: startIcon
             });
+            //实例化信息窗体
+            var title = '详细地址',
+                content = '<div class="img-wrap"><img src="/images/14_img02.png"></div><div class="content-txt"><div>柏溪镇铁北新区南山星城一期4幢1层5号</div><br/><div>电话：4008866556</div></div>';
+            var infoWindow = new AMap.InfoWindow({
+                isCustom: true,  //使用自定义窗体
+                content: createInfoWindow(title, content),
+                offset: new AMap.Pixel(16, -45)
+            });
+            //构建自定义信息窗体
+            function createInfoWindow(title, content) {
+                var info = document.createElement("div");
+                info.className = "custom-info input-card content-window-card";
+                // 定义中部内容
+                var middle = document.createElement("div");
+                middle.className = "info-middle";
+                middle.innerHTML = content;
+                info.appendChild(middle);
+
+                // 定义底部内容
+                var bottom = document.createElement("div");
+                bottom.className = "info-bottom";
+                bottom.style.position = 'relative';
+                bottom.style.top = '0px';
+                bottom.style.margin = '0 auto';
+                info.appendChild(bottom);
+                return info;
+            }
+            infoWindow.open(map, marker.getPosition());
             //鼠标点击marker弹出自定义的信息窗体
             AMap.event.addListener(marker, 'click', function () {
-                infoWindow.open(map, marker.getPosition());
+
             });
-        }
-
-        //实例化信息窗体
-        var title = '详细地址',
-            content = '<div class="img-wrap"><img src="/images/14_img02.png"></div><div class="content-txt"><div>柏溪镇铁北新区南山星城一期4幢1层5号</div><br/><div>电话：4008866556</div></div>';
-        var infoWindow = new AMap.InfoWindow({
-            isCustom: true,  //使用自定义窗体
-            content: createInfoWindow(title, content),
-            offset: new AMap.Pixel(16, -45)
-        });
-
-        //构建自定义信息窗体
-        function createInfoWindow(title, content) {
-            var info = document.createElement("div");
-            info.className = "custom-info input-card content-window-card";
-
-            //可以通过下面的方式修改自定义窗体的宽高
-            //info.style.width = "400px";
-            // 定义顶部标题
-//            var top = document.createElement("div");
-//            var titleD = document.createElement("div");
-//            var closeX = document.createElement("img");
-//            top.className = "info-top";
-//            titleD.innerHTML = title;
-//            closeX.src = "https://webapi.amap.com/images/close2.gif";
-//            closeX.onclick = closeInfoWindow;
-//
-//            top.appendChild(titleD);
-//            top.appendChild(closeX);
-//            info.appendChild(top);
-
-            // 定义中部内容
-            var middle = document.createElement("div");
-            middle.className = "info-middle";
-            middle.innerHTML = content;
-            info.appendChild(middle);
-
-            // 定义底部内容
-            var bottom = document.createElement("div");
-            bottom.className = "info-bottom";
-            bottom.style.position = 'relative';
-            bottom.style.top = '0px';
-            bottom.style.margin = '0 auto';
-            info.appendChild(bottom);
-            return info;
-        }
-
-        //关闭信息窗体
-        function closeInfoWindow() {
-            map.clearInfoWindow();
         }
     </script>
 </body>
-<script type="text/javascript">
-(function (doc,win) {
-var docEl = doc.documentElement, resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize', recalc = function(){
-var clientWidth = docEl.clientWidth;
-docEl.style.fontSize = 40 * (clientWidth / 375) + 'px';
-};
-if(!doc.addEventListener){
-return;
-}
-win.addEventListener(resizeEvt, recalc, false);
-doc.addEventListener('DOMContentLoaded', recalc, false);
-recalc()
-})(document,window)
-</script>
 </html>
